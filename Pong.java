@@ -55,7 +55,7 @@ public class Pong extends JPanel implements MouseMotionListener {
         }
 
         if (playerPaddle.CheckCollision(ball)) {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/paddlehit.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File("paddlehit.wav").getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
@@ -66,7 +66,7 @@ public class Pong extends JPanel implements MouseMotionListener {
             // System.out.println(bounces + " ball speed: " + ball.getSpeed() + " cx: " + ball.getCx() + " cY: " + ball.getCy());
             score += 10 * ball.getSpeed();
         } else if (aiPaddle.CheckCollision(ball)) {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/paddlehit.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File("paddlehit.wav").getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
@@ -76,14 +76,14 @@ public class Pong extends JPanel implements MouseMotionListener {
             // System.out.println(bounces + " ball speed: " + ball.getSpeed() + " cx: " + ball.getCx() + " cY: " + ball.getCy());
         }
         if (ball.getX() < 0) {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src/lose.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File("lose.wav").getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
             aiScore++;
             reset(0);
         } else if (ball.getX() > WINDOW_WIDTH - 5) {
-            audioInputStream = AudioSystem.getAudioInputStream(new File("src\\win.wav").getAbsoluteFile());
+            audioInputStream = AudioSystem.getAudioInputStream(new File("win.wav").getAbsoluteFile());
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
