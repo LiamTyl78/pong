@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -18,6 +17,7 @@ public class Pong extends JPanel implements MouseMotionListener {
     private AudioInputStream audioInputStream;
     private Clip clip;
     RandomInteger random = new RandomInteger(-2,2);
+    RandomInteger yPos = new RandomInteger(150, 300);
 
     
     public Pong() {
@@ -46,7 +46,7 @@ public class Pong extends JPanel implements MouseMotionListener {
     }
     
     public void GameLogic() throws UnsupportedAudioFileException,IOException, LineUnavailableException{
-        
+        int waitBounces = 5;
         ball.MoveBall();
         ball.BounceOffEdges(0, WINDOW_HEIGHT, 0, WINDOW_WIDTH);
         playerPaddle.MoveTowards(userMouseY);
@@ -59,6 +59,7 @@ public class Pong extends JPanel implements MouseMotionListener {
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
+
             ball.reverseX();
             ball.setX(ball.getX() + 1);
             bounces++;
@@ -91,8 +92,8 @@ public class Pong extends JPanel implements MouseMotionListener {
             reset(1);
         }
 
-        if (bounces == 5) {
-            ball.IncreaseSpeed();
+        if (bounces == waitBounces) {
+            waitBounces = ball.IncreaseSpeed();
             bounces = 0;
         }
     }
@@ -114,7 +115,7 @@ public class Pong extends JPanel implements MouseMotionListener {
             ball.setCx(2);
         }
         ball.setX(300);
-        ball.setY(200);
+        ball.setY(yPos.Generate());
         ball.setCy(random.Generate());
         ball.setSpeed(2);
         bounces = 0;

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 public class Paddle{
     private int height, x, y, speed;
     private Color color;
+    private boolean moving;
 
     static final int PADDLE_WIDTH = 15;
 
@@ -97,4 +98,12 @@ public class Paddle{
         return PADDLE_WIDTH;
     }
 
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
+    }
+    
 }

@@ -6,14 +6,12 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class App {
     public static void main(String[] args) throws Exception {
                 JFrame frame = new JFrame("Pong");
-                JPanel game = new JPanel();
                 Pong pong = new Pong();
-                // game.setBackground(Color.black);
+                
 
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(650, 510);
@@ -28,7 +26,6 @@ public class App {
                         try {
                             pong.GameLogic();
                         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
-                            // TODO Auto-generated catch block
                             e1.printStackTrace();
                         }
                         

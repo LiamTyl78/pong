@@ -3,6 +3,7 @@ import java.awt.*;
 public class Ball {
     private int x, y, cx, cy, size, speed;
     private Color color;
+    private RandomInteger random = new RandomInteger(5, 8);
     private static final int MAX_SPEED = 7;
     
     public Ball(int x, int y, int cx, int cy, int size, int speed, Color color) {
@@ -32,13 +33,13 @@ public class Ball {
         }
     }
 
-    public void IncreaseSpeed(){
+    public int IncreaseSpeed(){
         if (speed < MAX_SPEED) {
             speed ++;
             cx = (cx / Math.abs(cx)*speed);
             //cy = (cy / Math.abs(cy)*speed);
         }
-        if(cy < MAX_SPEED){
+        if(Math.abs(cy) < MAX_SPEED){
             if(cy > 0){
                 cy++;
             }
@@ -47,6 +48,7 @@ public class Ball {
             }
         }
         System.out.println("ball speed increased to: " + speed + "cX: " + cx + "cY: " +cy);
+        return random.Generate();
     }
 
     public void reverseY() {

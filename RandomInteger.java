@@ -43,17 +43,11 @@ public class RandomInteger {
         while(num == 0){
             num = (int)(range *  Math.random()) + min;
         }
-        System.out.println(num);
+        //System.out.println(num);
         return num;
     }
 
-    public int Generateor(){
-        int num = (int)(range *  Math.random()) + min;
-        if(num > 0){
-            return 2;
-        }
-        else{
-            return -2;
-        }
+    public int GenerateWait(){
+        return (int)(range *  Math.random()) + min;
     }
 }
